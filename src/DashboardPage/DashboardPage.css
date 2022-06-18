@@ -1,8 +1,29 @@
-.DashboardPage {
+.dashboard-page {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: #F0F0F0;
+}
+
+.badge {
+    font-size: 24px;
+}
+
+.list-object {
+    display: flex;
+    margin: 8px 0;
+    justify-content: space-between
+}
+
+#delete-button {
+    margin-left: auto;
+    height: auto;
+}
+
+#exit-button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
 }

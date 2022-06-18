@@ -1,11 +1,13 @@
 import './DashboardPage.css'
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import ListObject from "./ListObject/ListObject";
+import {Link, useNavigate} from "react-router-dom";
+import {Badge, Button, CloseButton, Form} from "react-bootstrap";
 
 const DashboardPage = () => {
     let navigation = useNavigate()
     const [lists, setLists] = useState([]);
+    const [newList, setNewList] = useState('');
+    const [listsUpdate, setListsUpdate] = useState(0);
     useEffect(() => {
         const token = localStorage.getItem('token')
         fetch('https://localhost/api/user/GetUserInfo', {
@@ -25,10 +27,64 @@ const DashboardPage = () => {
             })
             setLists(lists)
         })
-    }, [navigation])
+    }, [navigation, listsUpdate])
+
+    const onContentChange = (e) => {
+        setNewList(e.target.value)
+    }
+
+    const onUnfocused = (e) => {
+        if (newList.length >= 4 && newList.length <= 64) {
+            const token = localStorage.getItem('token')
+            fetch('https://localhost/api/user/CreateList/', {
+                method: 'post',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({listName: newList})
+            }).then(() => {
+                setListsUpdate(listsUpdate + 1)
+            })
+        }
+        setNewList('')
+    }
+
+    const deleteList = (e) => {
+        const listId = e.target.name
+        const token = localStorage.getItem('token')
+        fetch('https://localhost/api/user/DeleteList/' + listId, {
+            method: 'delete',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }).then(() => {
+            setListsUpdate(listsUpdate + 1)
+        })
+    }
+
+    const exit = () => {
+        localStorage.removeItem('token')
+        navigation('/login')
+    }
+
     return (
-        <div className='DashboardPage'>
-            {lists.map(list => (<ListObject key={list.listId} id={list.listId} name={list.listName}/>))}
+        <div className='dashboard-page'>
+            {lists.map(list => {
+                return (
+                    <div key={list.listId} className='list-object'>
+                        <Link to={'/list/' + list.listId}>
+                            <Badge className='badge' pill bg="primary">{list.listName}</Badge>
+                        </Link>
+                        <CloseButton id='delete-button' name={list.listId} onClick={deleteList}/>
+                    </div>
+                )
+            })}
+            <div className='task'>
+                <Form.Control type="text" placeholder="Enter list name" onChange={onContentChange} value={newList}
+                              onBlur={onUnfocused}/>
+            </div>
+            <Button id='exit-button' variant='danger' onClick={exit}>Exit</Button>
         </div>
     )
 
