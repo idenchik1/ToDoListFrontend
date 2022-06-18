@@ -1,9 +1,10 @@
 import React, {useEffect} from "react";
 import './App.css'
 import {BrowserRouter, Navigate, Route, Routes, useNavigate} from "react-router-dom";
-import Login from "./LoginPage/LoginPage";
+import LoginPage from "./LoginPage/LoginPage";
 import DashboardPage from "./DashboardPage/DashboardPage";
 import ListPage from "./ListPage/ListPage";
+import RegisterPage from "./RegisterPage/RegisterPage";
 
 const ProtectedRoute = ({children}) => {
     let navigate = useNavigate()
@@ -22,6 +23,7 @@ const ProtectedRoute = ({children}) => {
         if (!res.ok) {
             localStorage.removeItem('token')
             navigate('/login')
+            return
         }
     })
 
@@ -37,10 +39,12 @@ function App() {
                     <Route index path='/dashboard' element={<ProtectedRoute>
                         <DashboardPage/>
                     </ProtectedRoute>}/>
-                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/login' element={<LoginPage/>}/>
+                    <Route path='/register' element={<RegisterPage/>}/>
                     <Route path='/list/:id' element={<ProtectedRoute>
                         <ListPage/>
                     </ProtectedRoute>}/>
+                    <Route path='*' exact={true} element={<Navigate to={'/dashboard'}/>} />
                 </Routes>
             </BrowserRouter>
         </div>
