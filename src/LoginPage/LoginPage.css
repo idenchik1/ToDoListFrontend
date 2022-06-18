@@ -1,0 +1,28 @@
+.AuthForm {
+    background: #FEFEFE;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border: solid #560caa;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.FormGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.ErrorMessage {
+    margin: 0;
+    padding: 0;
+}
+
+.AuthPage {
+    background-image: url("https://cdnn21.img.ria.ru/images/07e5/06/18/1738448523_0:54:864:540_1920x0_80_0_0_22bd72aa578b3fece6a89a620c95c4a1.jpg");
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
