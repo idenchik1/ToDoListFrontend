@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button, Form} from 'react-bootstrap'
-import './LoginPage.css'
+import './RegisterPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const navigation = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -57,11 +57,11 @@ const LoginPage = () => {
         validatePassword(password)
         setPassword(password);
     };
-    const onAuth = () => {
+    const onRegister = () => {
         if (!validateUsername(username) || !validatePassword(password)) {
             return
         }
-        fetch("https://localhost/api/auth/Login", {
+        fetch("https://localhost/api/auth/Register", {
             method: 'post',
             body: JSON.stringify({username: username, password: password}),
             headers: {
@@ -89,13 +89,13 @@ const LoginPage = () => {
         })
     }
 
-    const moveToRegister = () => {
-        navigation('/register')
+    const moveToAuth = () => {
+        navigation('/login')
     }
 
     return (
-        <div className='auth-page'>
-            <div className='auth-form'>
+        <div className='register-page'>
+            <div className='register-form'>
                 <Form>
                     <Form.Group className="mb-3 FormGroup">
                         <Form.Label>Username</Form.Label>
@@ -108,11 +108,11 @@ const LoginPage = () => {
                         {passwordErrorMessage.map(value => <Form.Text>{value}</Form.Text>)}
                     </Form.Group>
                     <div className="form-buttons">
-                        <Button variant="primary" onClick={onAuth}>
-                            Enter
-                        </Button>
-                        <Button id="move-button" variant="link" onClick={moveToRegister}>
+                        <Button variant="primary" onClick={onRegister}>
                             Register
+                        </Button>
+                        <Button id="move-button" variant="link" onClick={moveToAuth}>
+                            Auth
                         </Button>
                     </div>
                 </Form>
@@ -121,4 +121,4 @@ const LoginPage = () => {
     );
 }
 
-export default LoginPage
+export default RegisterPage
