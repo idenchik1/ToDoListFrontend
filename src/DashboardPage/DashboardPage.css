@@ -14,11 +14,9 @@
 .list-object {
     display: flex;
     margin: 8px 0;
-    justify-content: space-between
 }
 
 #delete-button {
-    margin-left: auto;
     height: auto;
 }
 
