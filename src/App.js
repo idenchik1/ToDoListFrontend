@@ -14,7 +14,7 @@ const ProtectedRoute = ({children}) => {
             navigate('/login')
         }
     }, [navigate, token])
-    fetch('https://localhost/api/user/IsAuthed', {
+    fetch('https://backend/api/user/IsAuthed', {
         method: 'get',
         headers: {
             'Authorization': 'Bearer ' + token

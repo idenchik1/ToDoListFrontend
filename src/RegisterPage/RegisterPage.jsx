@@ -61,7 +61,7 @@ const RegisterPage = () => {
         if (!validateUsername(username) || !validatePassword(password)) {
             return
         }
-        fetch("https://localhost/api/auth/Register", {
+        fetch("https://backend/api/auth/Register", {
             method: 'post',
             body: JSON.stringify({username: username, password: password}),
             headers: {
