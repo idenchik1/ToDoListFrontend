@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap'
+import {Button, Form, Alert} from 'react-bootstrap'
 import './RegisterPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -97,6 +97,7 @@ const RegisterPage = () => {
         <div className='register-page'>
             <div className='register-form'>
                 <Form>
+                    <Alert.Heading>Register</Alert.Heading>
                     <Form.Group className="mb-3 FormGroup">
                         <Form.Label>Username</Form.Label>
                         <Form.Control onChange={onChangeUsername} type="username" placeholder="Enter username"/>
