@@ -70,6 +70,10 @@ const DashboardPage = () => {
 
     return (
         <div className='dashboard-page'>
+            <header className='dashboard-header'>
+                <img src={require('./logo.png')}/>
+                <Button id='exit-button' variant='danger' onClick={exit}>Exit</Button>
+            </header>
             {lists.map(list => {
                 return (
                     <div key={list.listId} className='list-object'>
@@ -84,7 +88,6 @@ const DashboardPage = () => {
                 <Form.Control type="text" placeholder="Enter list name" onChange={onContentChange} value={newList}
                               onBlur={onUnfocused}/>
             </div>
-            <Button id='exit-button' variant='danger' onClick={exit}>Exit</Button>
         </div>
     )
 

@@ -7,6 +7,14 @@
     background: #F0F0F0;
 }
 
+.dashboard-header {
+    background: #FEFEFE;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    margin-bottom: 8px;
+}
+
 .badge {
     font-size: 24px;
 }
@@ -24,4 +32,6 @@
     display: block;
     margin-left: auto;
     margin-right: 0;
+    min-width: 50px;
+    width: 5%;
 }
