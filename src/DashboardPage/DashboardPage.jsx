@@ -10,7 +10,7 @@ const DashboardPage = () => {
     const [listsUpdate, setListsUpdate] = useState(0);
     useEffect(() => {
         const token = localStorage.getItem('token')
-        fetch('https://backend/api/user/GetUserInfo', {
+        fetch('https://diplom.idenchik.tk/api/user/GetUserInfo', {
             method: 'get',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -36,7 +36,7 @@ const DashboardPage = () => {
     const onUnfocused = (e) => {
         if (newList.length >= 4 && newList.length <= 64) {
             const token = localStorage.getItem('token')
-            fetch('https://backend/api/user/CreateList/', {
+            fetch('https://diplom.idenchik.tk/api/user/CreateList/', {
                 method: 'post',
                 headers: {
                     'Authorization': 'Bearer ' + token,
@@ -53,7 +53,7 @@ const DashboardPage = () => {
     const deleteList = (e) => {
         const listId = e.target.name
         const token = localStorage.getItem('token')
-        fetch('https://backend/api/user/DeleteList/' + listId, {
+        fetch('https://diplom.idenchik.tk/api/user/DeleteList/' + listId, {
             method: 'delete',
             headers: {
                 'Authorization': 'Bearer ' + token,

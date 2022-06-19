@@ -61,7 +61,7 @@ const LoginPage = () => {
         if (!validateUsername(username) || !validatePassword(password)) {
             return
         }
-        fetch("https://backend/api/auth/Login", {
+        fetch("https://diplom.idenchik.tk/api/auth/Login", {
             method: 'post',
             body: JSON.stringify({username: username, password: password}),
             headers: {

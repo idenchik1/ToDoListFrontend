@@ -61,7 +61,7 @@ const RegisterPage = () => {
         if (!validateUsername(username) || !validatePassword(password)) {
             return
         }
-        fetch("https://backend/api/auth/Register", {
+        fetch("https://diplom.idenchik.tk/api/auth/Register", {
             method: 'post',
             body: JSON.stringify({username: username, password: password}),
             headers: {

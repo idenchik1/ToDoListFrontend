@@ -16,7 +16,7 @@ const ListPage = () => {
         })
         setTasks(tasksNew)
         const token = localStorage.getItem('token')
-        fetch('https://backend/api/user/ChangeTaskStatus/' + taskId, {
+        fetch('https://diplom.idenchik.tk/api/user/ChangeTaskStatus/' + taskId, {
             method: 'post',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -45,7 +45,7 @@ const ListPage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        fetch('https://backend/api/user/GetTasks/' + id, {
+        fetch('https://diplom.idenchik.tk/api/user/GetTasks/' + id, {
             method: 'get',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -67,7 +67,7 @@ const ListPage = () => {
             const token = localStorage.getItem('token')
             if (changedTask[0] === "") {
                 if (changedTask[1].length >= 4) {
-                    fetch('https://backend/api/user/CreateTask/' + id, {
+                    fetch('https://diplom.idenchik.tk/api/user/CreateTask/' + id, {
                         method: 'post',
                         headers: {
                             'Authorization': 'Bearer ' + token,
@@ -85,7 +85,7 @@ const ListPage = () => {
                 }
             }
             if (changedTask[1].length === 0) {
-                fetch('https://backend/api/user/DeleteTask/' + changedTask[0], {
+                fetch('https://diplom.idenchik.tk/api/user/DeleteTask/' + changedTask[0], {
                     method: 'delete',
                     headers: {
                         'Authorization': 'Bearer ' + token
@@ -97,7 +97,7 @@ const ListPage = () => {
                 return
             }
             if (changedTask[1].length >= 4 && changedTask[1].length <= 256) {
-                fetch('https://backend/api/user/EditTask/' + changedTask[0], {
+                fetch('https://diplom.idenchik.tk/api/user/EditTask/' + changedTask[0], {
                     method: 'put',
                     headers: {
                         'Authorization': 'Bearer ' + token,
