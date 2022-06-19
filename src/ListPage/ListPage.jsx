@@ -121,6 +121,10 @@ const ListPage = () => {
 
     return (
         <div className='list-page'>
+            <header className='list-header'>
+                <img src={require('../logo.png')} alt='logo'/>
+                <Button id="move-button" variant="primary" onClick={moveBack}>Back</Button>
+            </header>
             {tasks.map(task => {
                 return (
                     <div className='task' key={task.taskId}>
@@ -134,9 +138,6 @@ const ListPage = () => {
             <div className='task'>
                 <Form.Control type="text" placeholder="Enter task" onChange={onContentChange} onBlur={onUnfocused}/>
             </div>
-            <Button id="move-button" variant="primary" onClick={moveBack}>
-                Back
-            </Button>
         </div>
     )
 }

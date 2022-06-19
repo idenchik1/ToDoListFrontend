@@ -70,8 +70,8 @@ const DashboardPage = () => {
 
     return (
         <div className='dashboard-page'>
-            <header className='dashboard-header'>
-                <img src={require('./logo.png')}/>
+            <header className='list-header'>
+                <img src={require('../logo.png')} alt='logo'/>
                 <Button id='exit-button' variant='danger' onClick={exit}>Exit</Button>
             </header>
             {lists.map(list => {

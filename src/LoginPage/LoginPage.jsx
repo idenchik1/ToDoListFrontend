@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap'
+import {Button, Form, Alert} from 'react-bootstrap'
 import './LoginPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -97,6 +97,7 @@ const LoginPage = () => {
         <div className='auth-page'>
             <div className='auth-form'>
                 <Form>
+                    <Alert.Heading>Login</Alert.Heading>
                     <Form.Group className="mb-3 FormGroup">
                         <Form.Label>Username</Form.Label>
                         <Form.Control onChange={onChangeUsername} type="username" placeholder="Enter username"/>
@@ -109,11 +110,9 @@ const LoginPage = () => {
                     </Form.Group>
                     <div className="form-buttons">
                         <Button variant="primary" onClick={onAuth}>
-                            Enter
+                            Log in
                         </Button>
-                        <Button id="move-button" variant="link" onClick={moveToRegister}>
-                            Register
-                        </Button>
+                        <Button id="register-button" variant="link" onClick={moveToRegister}>Register</Button>
                     </div>
                 </Form>
             </div>
